@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(120deg, #E0C3FC 0%, #8EC5FC 100%);
+}
+
+/* Animated wave background */
+.login-bg {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-bg:before, .login-bg:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.7;
+    z-index: 0;
+}
+.login-bg:before {
+    width: 500px;
+    height: 360px;
+    top: -120px; left: -130px;
+    background: linear-gradient(135deg,#ffb2ff,#b2f9fc);
+    animation: slideWave 7s infinite alternate ease-in-out;
+}
+.login-bg:after {
+    width: 380px;
+    height: 290px;
+    bottom: -90px; right: -110px;
+    background: linear-gradient(120deg,#a7ff83,#17b6ff);
+    animation: slideWave2 8s infinite alternate ease-in-out;
+}
+
+@keyframes slideWave { 0% {left:-130px;} 100% {left:-90px;} }
+@keyframes slideWave2 { 0% {right:-110px;} 100% {right:-60px;} }
+
+.login-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.32);
+    backdrop-filter: blur(14px) saturate(1.2);
+    border-radius: 24px;
+    box-shadow: 0 12px 36px rgba(30,20,70,0.16);
+    padding: 46px 36px 32px;
+    width: 380px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+    animation: pop 1s cubic-bezier(.52,1.54,.56,.91);
+}
+
+@keyframes pop { 0%{transform:scale(0.95) translateY(50px); opacity:0;} 100%{transform:none; opacity:1;} }
+
+.login-card h2 {
+    font-size: 2.1em;
+    margin-bottom: 26px;
+    color: #361e6b;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg,#ff70b3,#9089fc 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 34px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 17px 45px 11px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 11px;
+    outline: 0;
+    background: rgba(250,250,255,0.92);
+    box-shadow: 0 2px 14px rgba(180,124,255,0.05);
+    transition: box-shadow 0.25s, border 0.13s;
+    border: 1.5px solid #ece6ff;
+    font-family: inherit;
+}
+
+.input-box input:focus {
+    box-shadow: 0 4px 22px rgba(156,102,255,0.11);
+    border: 1.5px solid #a882ff;
+    background: #faf3ff;
+}
+
+/* Floating/animated label */
+.input-box label {
+    position: absolute;
+    top: 18px; left: 18px;
+    font-size: 1em;
+    color: #938fd8;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.23s;
+    background: transparent;
+}
+
+.input-box input:focus + label,
+.input-box input:not(:placeholder-shown) + label,
+.input-box input:valid + label {
+    top: -8px;
+    left: 11px;
+    font-size: 0.86em;
+    color: #6358fb;
+    background: #fff0;
+    letter-spacing: 0.6px;
+    padding: 0 4px;
+}
+
+.toggle-pw {
+    position: absolute;
+    right: 15px;
+    top: 19px;
+    font-size: 1.25em;
+    color: #b982ff;
+    cursor: pointer;
+    transition: color 0.18s;
+}
+.toggle-pw:hover {
+    color: #5482e0;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px 0;
+    background: linear-gradient(90deg,#6b6cff,#b770ff 85%);
+    border: none;
+    color: #fff;
+    font-size: 1.18em;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(120,82,255,0.13);
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    transition: background 0.25s, box-shadow 0.22s;
+}
+.login-btn:hover {
+    background: linear-gradient(90deg,#b770ff,#9055ff 80%);
+    box-shadow: 0 4px 20px rgba(100,82,235,0.15);
+}
+
+.error-msg {
+    color: #ff426b;
+    margin-top: 8px;
+    font-size: 0.99em;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+/* Responsive */
+@media (max-width:500px) {
+    .login-card {width:95vw;padding:24px 7vw 17px;}
+}
+
+/* Optional accent icon for inputs (use inside .input-box before input tag) */
+.input-icon {
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    font-size: 1.22em;
+    color: #b982ff;
+    pointer-events: none;
+}
